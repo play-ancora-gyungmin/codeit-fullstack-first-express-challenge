@@ -1,0 +1,26 @@
+{
+  "name": "01-basic-setup",
+  "version": "1.0.0",
+  "description": "Express 프레임워크를 배우기 위한 기본 환경 설정을 단계별로 진행해보겠습니다. 각 체크박스를 완료하면 체크 표시를 해주세요!",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "format": "prettier --write src/**/*.js",
+    "format:check": "prettier --check src/**/*.js"
+  },
+  "keywords": ["express"],
+  "author": "LINN",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.35.0",
+    "eslint": "^9.35.0",
+    "prettier": "^3.6.2"
+  },"engines": {
+    "node": "^22.14.0",
+    "npm": "^10.9.2"
+  }
+}
