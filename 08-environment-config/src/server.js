@@ -1,4 +1,5 @@
 import express from 'express';
+import { config } from './config/config.js';
 import { router } from './routes/index.js';
 import { logger } from './middlewares/logger.js';
 import { requestTimer } from './middlewares/requestTImer.js';
@@ -6,7 +7,7 @@ import { cors } from './middlewares/cors.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 
 const app = express();
-const PORT = 5001;
+const PORT = config.PORT;
 
 // JSON 파싱 미들웨어
 app.use(express.json());
