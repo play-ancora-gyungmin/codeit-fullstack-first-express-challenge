@@ -13,7 +13,7 @@ export const validateUser = (req, res, next) => {
     }
   } catch (error) {
     next(error);
+    return;
   }
-
   next();
 };
