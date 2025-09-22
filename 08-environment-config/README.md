@@ -46,16 +46,15 @@ env/*
 import { z } from 'zod';
 
 const envSchema = z.object({
-  ENVIRONMENT: z
+  NODE_ENV: z
     .enum(['development', 'production', 'test'])
-    .default('development'),
-  PORT: z.coerce.number().min(1000).max(65535).default(5001),
+  PORT: z.coerce.number().min(1000).max(65535),
 });
 
 const parseEnvironment = () => {
   try {
     return envSchema.parse({
-      ENVIRONMENT: process.env.NODE_ENV,
+      NODE_ENV: process.env.NODE_ENV,
       PORT: process.env.PORT,
     });
   } catch (error) {
@@ -69,9 +68,9 @@ const parseEnvironment = () => {
 export const config = parseEnvironment();
 
 // 환경별 헬퍼 함수들
-export const isDevelopment = () => config.ENVIRONMENT === 'development';
-export const isProduction = () => config.ENVIRONMENT === 'production';
-export const isTest = () => config.ENVIRONMENT === 'test';
+export const isDevelopment = () => config.NODE_ENV === 'development';
+export const isProduction = () => config.NODE_ENV === 'production';
+export const isTest = () => config.NODE_ENV === 'test';
 ```
 
 ### 5. package.json 스크립트 변경
@@ -106,7 +105,7 @@ if (isDevelopment()) {
 
 app.listen(config.PORT, () => {
   console.log(`🚀 Server running on port ${config.PORT}`);
-  console.log(`📦 Environment: ${config.ENVIRONMENT}`);
+  console.log(`📦 Environment: ${config.NODE_ENV}`);
 });
 ```
 
